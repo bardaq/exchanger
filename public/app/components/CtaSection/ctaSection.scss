@@ -9,6 +9,7 @@
 	}
 	button{ margin-top: 2em; }
 	img{
+		pointer-events: none;
 		display: block;
 		position: absolute;
 		bottom: 0;
@@ -19,16 +20,17 @@
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 	.ctaSection{
 		padding: 10em 0;
+		.bordered-container{ padding: 5em 0 5em 5em; }
+		img{
+			display: inline-block;
+			position: relative;
+			opacity: 1;
+
+			filter: drop-shadow(5px 0 30px rgba($blue, 0.2));
+		}
 	}
-	.bordered-container{
-		padding: 5em 0 5em 5em;
-	}
-	img{
-		display: inline;
-		position: relative;
-		filter: drop-shadow(5px 0 30px rgba($blue, 0.2));
-	}
+
 }

@@ -19,3 +19,20 @@ button,a{
 		}
 	}
 }
+.navbar-collapse{
+	width: 100%;
+	background: rgba($black,.97);
+	text-align: center;
+	padding: 1em;
+	border-radius: .5em;
+	li{ margin-right: 0}
+	a{ margin: .5em 0; }
+	button{ margin-top: 1em;}
+}
+@media (min-width: 768px) {
+	.navbar-collapse{
+		background: none;
+		a{ margin: 0 1em 0 0; }
+		button{ margin-top: 0;}
+	}
+}

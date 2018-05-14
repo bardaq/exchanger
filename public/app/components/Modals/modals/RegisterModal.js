@@ -11,7 +11,7 @@ import {
 	Button
 } from 'reactstrap';
 import MaskedInput from 'react-maskedinput';
-
+import iconUser from '../img/icon-user.png';
 export default class LoginRegisterModal extends React.Component {
 	constructor(props) {
 		super(props);
@@ -27,11 +27,11 @@ export default class LoginRegisterModal extends React.Component {
 		return(<div className="modal-wrapper">
 			<Container>
 				<Row>
-					<Col xs="12" md={{size: 6, offset: 3}} className="modalBlock">
-						<button className="close" onClick={ () => this.props.toogleModal(null) }>&times;</button>
+					<Col xs="12" md={{size: 6, offset: 3}} className="modalBlock register-modal">
+						<button className="close" onClick={ () => this.props.toogleModal(null) }>x</button>
 						<Row>
 							<Col>
-								<Form className="exchangeForm">
+								<Form className="registerForm">
 									<h2>Регистрация</h2>
 
 									<InputGroup size="lg" className={ this.state.invalidPhone ? 'hasError' : ''}>
@@ -57,9 +57,9 @@ export default class LoginRegisterModal extends React.Component {
 
 									<p id='warningMessage' className='warningMessage'>{this.props.warningMessage}</p>
 
-									<Button onClick = { e => this.props.registerSubmitHandler(e) }>Submit</Button>
+									<Button color="primary" onClick = { e => this.props.registerSubmitHandler(e) }>Регистрация <span><img src={iconUser}/></span></Button>
 
-									<p><small>Уже зарегистрированы? <a href='#' onClick={ () => this.props.registerOrLoginToogler('login') }>Войти</a></small></p>
+									<p className="loginOrRegisterRow"><small>Уже зарегистрированы? <a href='#' onClick={ () => this.props.registerOrLoginToogler('login') }>Войти</a></small></p>
 								</Form>
 							</Col>
 						</Row>
