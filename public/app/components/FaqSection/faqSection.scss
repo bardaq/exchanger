@@ -1,0 +1,58 @@
+@import '../../../static/scss/variables';
+
+.faqSection{
+	padding: 1em 0 5em 0;
+	text-align: center;
+	.row{ margin-top: 3em; }
+}
+
+.faqItem__header{
+	display: flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+	justify-content: space-between;
+	margin: 1em;
+	padding: 1em 0;
+	border-bottom: 1px solid rgba($white, .2);
+	h6{
+		max-width: 90%;
+		text-align: left;
+	}
+	&.open::after{
+		content: "▲";
+		font-size: .8em;
+		color: $blue;
+	}
+	&.closed::after{
+		content: "▼";
+		font-size: .8em;
+		color: $blue;
+	}
+	span{ color: $blue; }
+}
+.card{
+	background: none;
+	border: none;
+	text-align: left;
+	.card-body{
+		padding: 1em 	2em;
+		background: none;
+	}
+}
+
+@media (min-width: 992px) {
+	.faqSection{  padding: 5em 0 10em 0;}
+
+	.faqItem__header{
+		&.open::after{
+			content: "Закрыть ▲";
+			font-size: .8em;
+			color: $blue;
+		}
+		&.closed::after{
+			content: "Открыть ▼";
+			font-size: .8em;
+			color: $blue;
+		}
+	}
+}

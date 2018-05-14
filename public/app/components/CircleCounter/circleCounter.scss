@@ -1,0 +1,56 @@
+@import '../../../static/scss/variables';
+.circleCounter{
+ width: 100%;
+ height: 100%;
+}
+.circleCounterCointainer{
+	padding: 0em;
+	position:relative;
+}
+.circleCounter{
+	position: relative;
+	transform: rotate(-90deg);
+	stroke-linecap: round;
+}
+.circleCounterProgressBg{
+	stroke: $blue;
+	stroke-Width: 2;
+	fill: none;
+	opacity: .1
+}
+.circleCounterProgress{
+	stroke: $blue;
+	stroke-Width: 2;
+	fill: none;
+}
+.CircleCounterValue{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	transform: translateY(-60px);
+}
+.circle-counter__description{
+	display: block;
+	margin: 0 auto;
+	max-width: 250px;
+	font-size: .9em;
+	line-height: 1em;
+}
+
+.CircleCounterCurrentRate{
+	font-size: 3em;
+	color: $white;
+}
+.CircleCounterCurrency{
+	font-size: 16px;
+	top: -1.4em;
+	color: $blue;
+}
+
+@media (min-width: 992px) {
+	.circleCounterCointainer{ padding: 3em; }
+}

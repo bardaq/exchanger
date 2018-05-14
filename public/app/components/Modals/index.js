@@ -1,21 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { actionToogleModalIsOpen } from '../../actions/actionToogleModalIsOpen';
 import { bindActionCreators } from 'redux';
+import { actionToogleModal } from './actionToogleModal';
 
 import { Container, Row, Col } from 'reactstrap';
+import ContactsModal from './modals/ContactsModal'
+import LoginRegisterModal from './modals/LoginRegisterModal'
+import WidthdrawalModal from './modals/WidthdrawalModal'
+import FillUpBalanceModal from './modals/FillUpBalanceModal'
 
-import ContactsModal from './ContactsModal'
-import LoginRegisterModal from '../../containers/LoginRegisterModal'
-import WidthdrawalModal from './WidthdrawalModal'
-import FillUpBalanceModal from './FillUpBalanceModal'
-
-class RootModal extends React.Component {
+class Modals extends React.Component {
 	constructor(props){
 		super(props);
 	}
 	toogleModal(modalType){
-		this.props.actionToogleModalIsOpen(modalType)
+		this.props.actionToogleModal(modalType)
 	}
 
 	render(){
@@ -57,6 +56,6 @@ export default connect(
 		modalType: state.modalsReducer.modalType
 	}),
 	dispatch => {
-		return bindActionCreators({actionToogleModalIsOpen },dispatch);
+		return bindActionCreators({actionToogleModal },dispatch);
 	}
-)(RootModal)
+)(Modals)

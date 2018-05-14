@@ -1,0 +1,11 @@
+@import '../../../static/scss/variables';
+.footer{
+	background: $black;
+	padding: 1em 0;
+	text-align: center !important;
+	color: rgba(white, .5);
+	font-size: .8em;
+	a{
+		color: rgba(white, .5);
+	}
+}

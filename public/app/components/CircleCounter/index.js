@@ -70,15 +70,16 @@ class circleCounter extends React.Component {
 	render() {
 		return <div id="circleCounterCointainer" className="circleCounterCointainer">
 			<svg width="100%" viewBox="0 0 100 100" className="circleCounter">
-				<circle cx="50" cy="50" r="48" fill="none" stroke="#e6e6e6" strokeWidth="2" />
-				<circle cx="50" cy="50" r="48" fill="none" stroke="#0053FB" strokeWidth="2" className="circleCounterProgress"
+				<circle cx="50" cy="50" r="48" fill="none" stroke="#e6e6e6" strokeWidth="2" className="circleCounterProgressBg"/>
+				<circle cx="50" cy="50" r="48" className="circleCounterProgress"
 					strokeDasharray="301" strokeDashoffset={this.state.progress > 0 ? this.state.progress : 0 }
 				/>
 			</svg>
 			<p className="CircleCounterValue">
 				<span className="CircleCounterCurrentRate">{this.props.rate}</span>
 				<sup className="CircleCounterCurrency">{this.props.currency}</sup>
-				<br/>Курс обмена
+				<br/>
+				<span className="circle-counter__description"> Курс обмена обновляется каждую минуту</span>
 			</p>
 		</div>
 	}

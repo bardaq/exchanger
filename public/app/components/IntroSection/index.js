@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from 'reactstrap';
-import ExchangeForm from "../containers/ExchangeForm";
-import CircleCounter from "./CircleCounter.react.js";
+import ExchangeForm from "../exchangeForm";
+import CircleCounter from "../circleCounter";
 
 let IntroSection = props => {
 	return (

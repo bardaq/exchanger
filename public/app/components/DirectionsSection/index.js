@@ -1,13 +1,13 @@
 import React from "react";
 import { Container, Row, Col } from 'reactstrap';
-import sberbank from "../../static/images/sberbank.png";
-import privatbank from "../../static/images/privatbank.png";
-import qiwi from "../../static/images/qiwi.png";
-import visa from "../../static/images/visa.png";
-import mastercard from "../../static/images/mastercard.png";
-import alfabank from "../../static/images/alfabank.png";
-import maesto from "../../static/images/maestro.png";
-import yandexdengi from "../../static/images/yandexdengi.png";
+import sberbank from "./img/sberbank.png";
+import privatbank from "./img/privatbank.png";
+import qiwi from "./img/qiwi.png";
+import visa from "./img/visa.png";
+import mastercard from "./img/mastercard.png";
+import alfabank from "./img/alfabank.png";
+import maesto from "./img/maestro.png";
+import yandexdengi from "./img/yandexdengi.png";
 
 
 let DirectionsSection = props => {
@@ -28,5 +28,4 @@ let DirectionsSection = props => {
 		</Container>
 	</section> )
 }
-
 export default DirectionsSection

@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputGroup, Label, Input, InputGroupAddon, InputGroupButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { directions } from '../../config';
+import { directions } from '../../config.js';
 
 export default class PaymentOutcome extends React.Component {
 	constructor(props) {

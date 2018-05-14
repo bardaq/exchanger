@@ -2,10 +2,10 @@ import React from 'react';
 import { Container,
 			Row,
 			Col,
-			Form, 
-			InputGroup, 
-			Label, 
-			Input, 
+			Form,
+			InputGroup,
+			Label,
+			Input,
 			Button
 } from 'reactstrap';
 

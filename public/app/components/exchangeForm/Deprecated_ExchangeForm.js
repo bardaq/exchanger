@@ -3,6 +3,9 @@ import { Form, Button} from 'reactstrap';
 import { connect } from 'react-redux';
 import { Link, withRouter } from "react-router-dom";
 import { bindActionCreators } from 'redux';
+import { actionUpdateMethod, actionUpdateCurrency, actionUpdateRate, actionUpdatePaymentAmount,
+	actionUpdatePaymentAmount, actionUpdateDirectionAmount, actionUpdateAccountNum,
+	actionUpdateAccountNum, actionUpdatePhone, agreeWithTerms } from './actions';
 
 import PaymentAmountInput from './PaymentAmountInput';
 import DirectionAmountInput from './DirectionAmountInput';
@@ -10,16 +13,8 @@ import AccountNumInput from './AccountNumInput';
 import PhoneInput from './PhoneInput';
 import TermsCheck from './TermsCheck';
 
-import { actionUpdateMethod } from '../../actions/actionUpdateMethod';
-import { actionUpdateCurrency } from '../../actions/actionUpdateCurrency';
-import { actionUpdateRate } from '../../actions/actionUpdateRate';
-import { actionUpdatePaymentAmount } from '../../actions/actionUpdatePaymentAmount';
-import { actionUpdateDirectionAmount } from '../../actions/actionUpdateDirectionAmount';
-import { actionUpdateAccountNum } from '../../actions/actionUpdateAccountNum';
-import { actionUpdatePhone } from '../../actions/actionUpdatePhone';
-import { agreeWithTerms } from '../../actions/agreeWithTerms';
 
-import TransactionsCreator from '../../utils/transactionsCreator';
+//import TransactionsCreator from '../../utils/transactionsCreator';
 //import { createDataStamp } from '../../actions/createDataStamp';
 //import { bakeTransactionCookie } from '../../actions/bakeTransactionCookie';
 
@@ -62,7 +57,9 @@ class ExchangeForm extends React.Component {
 					!this.state.invalidAccountNum &&
 					!this.state.invalidPhone &&
 					!this.state.invalidCheck
-				) { TransactionsCreator.create() }
+				) {
+				//TransactionsCreator.create()
+				}
 				else { console.log('invalid. return', this.state); }
 
 			})

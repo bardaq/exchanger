@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col} from 'reactstrap';
-import ExchangeForm from "../../containers/ExchangeForm";
-import CircleCounter from "../CircleCounter.react.js";
+//import ExchangeForm from "../../ExchangeForm";
+//import CircleCounter from "../CircleCounter.react.js";
 
 export default class WidthdrawalModal extends React.Component {
 	constructor(props) {
@@ -14,7 +14,7 @@ export default class WidthdrawalModal extends React.Component {
 				<Row>
 					<Col xs="12" className="modalBlock">
 						<button className="close" onClick={ () => this.props.toogleModal(null) }>&times;</button>
-						<Row>
+						{/*<Row>
 							<Col xs="12" sm="12" md="6">
 								<h1>Вывести средства</h1>
 								<ExchangeForm isInModal/>
@@ -22,7 +22,7 @@ export default class WidthdrawalModal extends React.Component {
 							<Col xs="12" sm="12" md="6">
 								<CircleCounter/>
 							</Col>
-						</Row>
+						</Row> */}
 					</Col>
 				</Row>
 			</Container>

@@ -1,0 +1,21 @@
+@import '../../../static/scss/variables';
+.navbar-expand-md{
+	padding: 2em;
+	pointer-events: none;
+}
+button,a{
+	pointer-events: auto;
+}
+.nav-item{
+	pointer-events: auto;
+	margin-right: 2em;
+	a{
+		color: $white !important;
+		opacity: .7;
+		transition: all .5s;
+		&:hover{
+			opacity: 1;
+			transform: translateY(-2px);
+		}
+	}
+}

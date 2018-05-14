@@ -1,0 +1,7 @@
+@import '../../../static/scss/variables';
+.intro{
+	display: block;
+	position: relative;
+	background-image: linear-gradient(-45deg, rgba($purple, .1) 0%, $indigo 80%, rgba($purple, .2) 100%);
+	padding: 10em 0 5em 0;
+}

@@ -1,12 +1,12 @@
 import React from "react";
-import { 
+import {
   Container,
   Row,
   Col,
   Button,
   Card,
   CardBody,
-  Collapse 
+  Collapse
 } from 'reactstrap';
 
 
@@ -14,18 +14,19 @@ export default class FaqItem extends React.Component {
 	constructor(props) {
 		super(props);
 		this.toggle = this.toggle.bind(this);
-		this.state = { collapse: false, status: 'Closed' };
+		this.state = { collapse: false };
 	}
 
 	toggle() {
 		this.setState({ collapse: !this.state.collapse });
+		//this//document.getElementById('faqItem__')
 	}
 
 	render() {
 		return (
 			<Col xs="12" sm="12" md={6} className="faqItem">
-				<div color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>
-					<h6>{this.props.title}</h6><span> Открыть &#9660; &#9650;</span>
+				<div className={"faqItem__header " + (this.state.collapse ? 'open' : 'closed')} onClick={this.toggle}>
+					<h6>{this.props.title}</h6>
 				</div>
 				<Collapse isOpen={this.state.collapse}>
 				<Card>
