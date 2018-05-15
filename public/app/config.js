@@ -1,11 +1,11 @@
 // -------------- URL'S ------------------------//
 export const CREATE_TRANSACTION_API_URL = 'http://localhost:3000/createTransaction',
-							GET_RATE_API_URL = 'http://localhost:3000/getRate',
-							REGISTER_API_URL = 'http://localhost:3000/register',
-							LOGIN_API_URL = 'http://localhost:3000/login',
-							CHECK_TOKEN_API_URL = 'http://localhost:3000/isLogged',
-							GET_ACTIVITY_SUMMARIES_API_URL = 'http://localhost:3000/getActivitySummaries',
-							GET_CONFIG_API_URL = 'http://localhost:3000/getConfig';
+						GET_RATE_API_URL = 'http://localhost:3000/getRate',
+						REGISTER_API_URL = 'http://localhost:3000/register',
+						LOGIN_API_URL = 'http://localhost:3000/login',
+						CHECK_TOKEN_API_URL = 'http://localhost:3000/isLogged',
+						GET_ACTIVITY_SUMMARIES_API_URL = 'http://localhost:3000/getActivitySummaries',
+						GET_CONFIG_API_URL = 'http://localhost:3000/getConfig';
 
 export const directions = {
 	in: [

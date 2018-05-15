@@ -10,9 +10,17 @@ export default class PaymentIncome extends React.Component {
 		this.state = {
 			dropdownOpen: false,
 			splitButtonOpen: false,
-			directions: []
+			directions: [],
+			amount: 0
 		};
+		this.handleChange = this.handleChange.bind(this);
 	}
+
+	handleChange(event) {
+		this.props.updateIncomeAmount(event.target.value);
+		this.setState({value: event.target.value});
+	}
+
 	toggleDropDown() {
 		this.setState({
 			dropdownOpen: !this.state.dropdownOpen
@@ -32,7 +40,7 @@ export default class PaymentIncome extends React.Component {
 
 	componentWillMount(){
 		let directionsList = [];
-		// Сreaing array-list of directions for dropdown menu
+		// Сreating array-list of directions for dropdown menu
 		for ( let i = 0; i < directions.in.length; i++){
 				directionsList.push(<DropdownItem key={'incomeMethod'+i} onClick={e => {
 					this.changeMethod(directions.in[i].name, directions.in[i].currency, directions.in[i].type );
@@ -45,8 +53,8 @@ export default class PaymentIncome extends React.Component {
 		return <InputGroup>
 				<Label for="paymentIncome">Продаете</Label>
 				<Input id="paymentIncome" className="paymentIncome" name="paymentIncome"
-					defaultValue={ parseFloat(this.props.incomeAmount).toFixed(2) }
-					//onChange={ e => this.onChangeHandler(e) }
+					defaultValue={parseFloat(this.props.incomeAmount).toFixed(2)}
+					onChange={this.handleChange}
 				/>
 
 				<InputGroupButtonDropdown addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>

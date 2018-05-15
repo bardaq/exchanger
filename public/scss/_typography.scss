@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2:300,500&subset=cyrillic');
+	html,body{
+		font-size: 16px;
+		font-family: 'Exo 2', sans-serif;
+		letter-spacing: 1px;
+		font-weight: 300;
+	}
+	h1{
+		font-size: 3.5em;
+		line-height: 1em;
+		letter-spacing: 1px;
+		font-weight: 500;
+		margin-bottom: 1em;
+	}
+	h2{
+		font-size: 1.5em;
+		line-height: 1em;
+		letter-spacing: 1px;
+		font-weight: 500;
+		margin-bottom: 1em;
+	}
+	h3{
+		font-size: 3em;
+		line-height: 1em;
+		letter-spacing: 1px;
+		font-weight: 500;
+	}
+	h4{
+
+	}
+	h5{
+
+	}
+	h6{
+		font-size: 1em;
+		font-size: 1.2em;
+		font-weight: 300;
+	}
+	p{
+		letter-spacing: 1px;
+		font-weight: 300;
+		margin-bottom: 1em;
+	}
+	ul{
+		padding-left: 0;
+		ol,li{
+			padding-left: 0;
+		}
+	}
+	small{font-weight: 300; }
+@media (min-width: 769px) {
+	h1{
+		font-size: 5em;
+		line-height: 1em;
+		letter-spacing: 1px;
+		font-weight: 500;
+		margin-bottom: 1em;
+	}
+	h2{
+		font-size: 3em;
+		line-height: 1em;
+		letter-spacing: 1px;
+		font-weight: 500;
+		margin-bottom: 1em;
+	}
+}

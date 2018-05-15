@@ -2,7 +2,7 @@ import React  from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { CHECK_TOKEN_API_URL } from '../config';
 import { read_cookie } from 'sfcookies';
-import AccountPage from '../containers/AccountPage';
+import AccountPage from '../pages/AccountPage';
 
 export default class PrivateRoute extends React.Component {
 	constructor(props){

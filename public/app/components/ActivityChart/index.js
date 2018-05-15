@@ -75,9 +75,9 @@ export default class ActivityChart extends React.Component {
 														fontStyle: 300,
 														beginAtZero: true,
 														maxTicksLimit: 7,
-														padding: 30,
+														padding: 20,
 														suggestedMin: 0,
-														suggestedMax: 20,
+														suggestedMax: 30,
 													},
 													gridLines: {
 														drawBorder: false
@@ -94,7 +94,7 @@ export default class ActivityChart extends React.Component {
 														fontColor: "rgba(255,255,255,.5)",
 														fontStyle: 300,
 														suggestedMin: 0,
-														suggestedMax: 100,
+														suggestedMax: 10,
 													},
 													gridLines: {
 														drawTicks: false,

@@ -15,5 +15,4 @@ export default function validation(transaction, errorSetter){
 
 	if (Object.keys(errors).length > 0) return errorSetter(errors);
 	else return 'valid';
-
 }

@@ -1,6 +1,10 @@
 import React from "react";
 import { connect } from 'react-redux';
 
+
+// TODO:
+// dispatch 'updateCurrecnyRate' each minute
+
 class circleCounter extends React.Component {
 	constructor(props) {
 		super(props);
@@ -87,8 +91,8 @@ class circleCounter extends React.Component {
 
 function putStoreToProps(state){
 	return{
-		currency: state.transactionInfoReducer.currency,
-		rate: state.transactionInfoReducer.rate
+		currency: state.exchangeReducer.currency,
+		rate: state.exchangeReducer.rate
 	}
 }
 

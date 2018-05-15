@@ -4,26 +4,14 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import { bindActionCreators } from 'redux';
 
-//import PaymentAmountInput from '../components/exchangeForm/PaymentAmountInput';
-//import DirectionAmountInput from '../components/exchangeForm/DirectionAmountInput';
 import PaymentIncome from './PaymentIncome';
 import PaymentOutcome from './PaymentOutcome';
 import AccountNumInput from './AccountNumInput';
 import PhoneInput from './PhoneInput';
 import TermsCheck from './TermsCheck';
 
-// import { actionUpdateMethod } from '../actions/actionUpdateMethod';
-import { updateIncomeMethod, updateOutcomeMethod, getRate } from './actions';
-// import { actionUpdateCurrency } from '../actions/actionUpdateCurrency';
-// import { actionUpdateRate } from '../actions/actionUpdateRate';
-// import { actionUpdatePaymentAmount } from '../actions/actionUpdatePaymentAmount';
-// import { actionUpdateDirectionAmount } from '../actions/actionUpdateDirectionAmount';
-// import { actionUpdateAccountNum } from '../actions/actionUpdateAccountNum';
-// import { actionUpdatePhone } from '../actions/actionUpdatePhone';
-// import { agreeWithTerms } from '../actions/agreeWithTerms';
-// import { createDataStamp } from '../actions/createDataStamp';
-// import { actionCreateTransaction  } from '../actions/actionCreateTransaction';
-
+import { updateIncomeMethod, updateOutcomeMethod, getRate, updatePhone, agreeWithTerms, updateAccountNum,
+updateIncomeAmount } from './actions';
 import { bake_cookie } from 'sfcookies';
 import validateTransaction from './validateTransaction';
 
@@ -65,25 +53,19 @@ class ExchangeForm extends React.Component {
 		return <Form className="exchangeForm">
 			<PaymentIncome
 				incomeMethod = { this.props.transactionInfo.incomeMethod }
-				incomeAmount = { this.props.transactionInfo.incomeAmount }
+				incomeAmount = { this.props.transactionInfo.updateIncomeAmount }
 				updateIncomeMethod = { this.props.updateIncomeMethod }
 				getRate = { this.props.getRate }
-									// invalidPaymentAmount = { this.state.invalidPaymentAmount}
-									// clearValidation = { this.clearValidation }
-									// isInModal = { this.props.isInModal }
 			/>
 			<PaymentOutcome
 				outcomeMethod = { this.props.transactionInfo.outcomeMethod }
 				outcomeAmount = { this.props.transactionInfo.outcomeAmount }
 				updateOutcomeMethod = { this.props.updateOutcomeMethod }
 				getRate = { this.props.getRate }
-									// invalidPaymentAmount = { this.state.invalidPaymentAmount}
-									// clearValidation = { this.clearValidation }
-									// isInModal = { this.props.isInModal }
 			/>
-			<AccountNumInput />
-			<PhoneInput />
-			<TermsCheck />
+			<AccountNumInput updateAccountNum = {this.props.updateAccountNum} />
+			<PhoneInput updatePhone = {this.props.updatePhone} />
+			<TermsCheck agreeWithTerms = {this.props.agreeWithTerms} />
 
 			<Button className="submit" color="primary" size="lg" onClick={	event => { this.props.isInModal ? null : this.submit() }}> Обменять <span>&#8635;</span>  </Button>
 		</Form>
@@ -97,11 +79,11 @@ function mapDispatchToProps(dispatch){
 		// actionUpdateCurrency,
 		// actionUpdateMethod,
 		// actionUpdateRate,
-		// actionUpdatePaymentAmount,
+		updateIncomeAmount,
 		// actionUpdateDirectionAmount,
-		// actionUpdateAccountNum,
-		// actionUpdatePhone,
-		// agreeWithTerms,
+		updateAccountNum,
+		updatePhone,
+		agreeWithTerms,
 		// createDataStamp,
 		// actionCreateTransaction
 	}, dispatch);
@@ -109,33 +91,12 @@ function mapDispatchToProps(dispatch){
 
 export default withRouter(connect(
 	state => ({
-		transactionInfo: state.transactionInfoReducer,
+		transactionInfo: state.exchangeReducer,
 		// directionAmount: state.transactionInfoReducer.directionAmount,
-		// phone: state.transactionInfoReducer.phone,
+		//phone: state.exchangeReducer.phone,
 		// method: state.transactionInfoReducer.method,
 		// dataStamp: state.transactionsCreatorReducer.dataStamp
 	}),
 	mapDispatchToProps
 )(ExchangeForm))
 
-
-
-			// <DirectionAmountInput directionAmount= { this.props.directionAmount }
-			// 				method = {this.props.method}
-			// 				actionUpdateCurrency = {this.props.actionUpdateCurrency }
-			// 				actionUpdateMethod = { this.props.actionUpdateMethod }
-			// 				actionUpdateRate = { this.props.actionUpdateRate }
-			// 				clearValidation = { this.clearValidation }/>
-
-			// <AccountNumInput updateAccountNum= { this.props.actionUpdateAccountNum }
-			// 					invalidAccountNum = { this.state.invalidAccountNum}
-			// 					clearValidation = { this.clearValidation }/>
-
-			// <PhoneInput updatePhone= { this.props.actionUpdatePhone }
-			// 				phone = { this.props.phone }
-			// 				invalidPhone = { this.state.invalidPhone }
-			// 				clearValidation = { this.clearValidation }/>
-
-			// <TermsCheck agreeWithTerms = { this.props.agreeWithTerms }
-			// 				invalidCheck = { this.state.invalidCheck}
-			// 				clearValidation = { this.clearValidation }/>
