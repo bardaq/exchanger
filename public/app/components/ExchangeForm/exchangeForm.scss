@@ -1,4 +1,4 @@
-@import '../../../static/scss/variables';
+@import '../../../scss/variables';
 .exchangeForm{
 	margin: 5em 0;
 	text-align: center;
@@ -83,6 +83,14 @@
 		text-align: left;
 	}
 
+}
+.dropdown-menu{
+	background: $midnight;
+	color: $white;
+	button{
+		border: none !important;
+		color: $white;
+	}
 }
 @media (min-width: 992px) {
 	.exchangeForm{

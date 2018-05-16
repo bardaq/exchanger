@@ -1,13 +1,13 @@
-@import '../../../static/scss/variables';
+@import '../../../scss/variables';
 .activity-chart{
 	display: none;
 }
 @media (min-width: 430px) {
 	.activity-chart{
 		display: block;
+		position: relative;
 		text-align: center;
-		background-image: linear-gradient(-45deg, rgba(0,150,255, .2) 0%, $indigo 50%, rgba(0,150,255, .2) 100%);
-		padding: 10em 0;
+		padding: 5em 0;
 		.chartjs-render-monitor{
 			min-height: 500px;
 		}

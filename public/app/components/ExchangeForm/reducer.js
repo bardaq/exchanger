@@ -1,8 +1,8 @@
 import{
-	UPDATE_CURRENCY, UPDATE_INCOME_METHOD, UPDATE_OUTCOME_METHOD,
-	UPDATE_RATE, UPDATE_INCOME_AMOUNT, UPDATE_DIRECTION_AMOUNT,
+	UPDATE_INCOME_AMOUNT, UPDATE_INCOME_METHOD, UPDATE_OUTCOME_AMOUNT, UPDATE_OUTCOME_METHOD,
 	UPDATE_PHONE, UPDATE_ACCOUNT_NUM, AGREE_WITH_TERMS,
-	CREATE_TRANSACTION, CREATE_DATASTAMP
+	UPDATE_RATE, UPDATE_RATE_FETCHING, UPDATE_RATE_FETCHING_ERROR
+	//CREATE_TRANSACTION, CREATE_DATASTAMP
 } from '../../constants';
 import { directions } from '../../config';
 
@@ -19,33 +19,26 @@ const initialState = {
 	outcomeType: directions.out[0].type,
 
 	accountNum: '',
-	accountNum: directions.out[0].currency,
-
 	phone: '',
 	agreeWithTerms: false,
 
-	//currency: defaultCurrency,
-	//method: defaultMethod,
 	rate: "00000.00",
+	rateFetching: false,
+	rateFetchingError: false,
 	dataStamp: 0
-	//paymentAmount: 0,
-	//directionAmount: 0,
-	// phone: '',
-	// accountNum: '',
-	//agreeWithTerms: false
 }
 
 export default function updateMethod(state = initialState, action) {
 
 	switch (action.type) {
 
-		case UPDATE_CURRENCY:
-			return { ...state, currency: action.payload.currency };
-			break;
-
-		// case UPDATE_METHOD:
-		// 	return { ...state, method: action.payload.method }
-		// 	break;
+		//INCOME
+		case UPDATE_INCOME_AMOUNT:
+			return {
+				...state,
+				incomeAmount: action.payload.incomeAmount,
+				outcomeAmount: action.payload.outcomeAmount }
+				break;
 		case UPDATE_INCOME_METHOD:
 			return {
 				...state,
@@ -54,6 +47,13 @@ export default function updateMethod(state = initialState, action) {
 				incomeType: action.payload.type
 			}; break;
 
+		//OUTCOME
+		case UPDATE_OUTCOME_AMOUNT:
+			return {
+				...state,
+				outcomeAmount: action.payload.outcomeAmount,
+				incomeAmount: action.payload.incomeAmount }
+				break;
 		case UPDATE_OUTCOME_METHOD:
 			return {
 				...state,
@@ -62,43 +62,46 @@ export default function updateMethod(state = initialState, action) {
 				outcomeType: action.payload.type
 			}; break;
 
-		case UPDATE_RATE:
-			return { ...state, rate: action.payload.rate }
-			break;
-
-		case UPDATE_INCOME_AMOUNT:
-			return {
-				...state,
-				paymentAmount: action.payload.paymentAmount,
-				directionAmount: action.payload.directionAmount }
-				break;
-
-		case UPDATE_DIRECTION_AMOUNT:
-			return {
-				...state,
-				paymentAmount: action.payload.paymentAmount,
-				directionAmount: action.payload.directionAmount }
-				break;
-
+		//TRANSACTION INFO
 		case UPDATE_PHONE:
 			return { ...state, phone: action.payload.phone }
 			break;
-
 		case UPDATE_ACCOUNT_NUM:
 			return { ...state, accountNum: action.payload.accountNum }
 			break;
-
 		case AGREE_WITH_TERMS:
 			return { ...state, agreeWithTerms: action.payload.agreeWithTerms }
 			break;
 
-		case CREATE_DATASTAMP:
-			return {...state, dataStamp: action.payload.dataStamp};
+		//SERVICES
+		case UPDATE_RATE:
+			return {
+				...state,
+				rate: action.payload.rate,
+				rateFetchingError: action.payload.rateFatchingError,
+				rateFetching: action.payload.rateFatching
+			}
 			break;
-
-		case CREATE_TRANSACTION:
-			return state;
+		case UPDATE_RATE_FETCHING:
+			return {
+				...state,
+				rateFetchingError: action.payload.rateFatchingError,
+				rateFetching: action.payload.rateFatching
+			}
 			break;
+		case UPDATE_RATE_FETCHING_ERROR:
+			return {
+				...state,
+				rateFetchingError: action.payload.rateFetchingError,
+				rateFetching: action.payload.rateFetching,
+			}
+			break;
+		// case CREATE_DATASTAMP:
+		// 	return {...state, dataStamp: action.payload.dataStamp};
+		// 	break;
+		// case CREATE_TRANSACTION:
+		// 	return state;
+		// 	break;
 
 		default:
 			return state

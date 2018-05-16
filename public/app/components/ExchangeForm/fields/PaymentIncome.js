@@ -1,8 +1,9 @@
 import React from 'react';
 import { InputGroup, Label, Input, InputGroupAddon, InputGroupButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { directions } from '../../config.js';
+import { directions } from '../../../config';
+import { each } from 'lodash';
 
-export default class PaymentOutcome extends React.Component {
+export default class PaymentIncome extends React.Component {
 	constructor(props) {
 		super(props);
 		this.toggleDropDown = this.toggleDropDown.bind(this);
@@ -12,7 +13,13 @@ export default class PaymentOutcome extends React.Component {
 			splitButtonOpen: false,
 			directions: []
 		};
+		this.handleChange = this.handleChange.bind(this);
 	}
+
+	handleChange(event) {
+		this.props.updateIncomeAmount(event.target.value);
+	}
+
 	toggleDropDown() {
 		this.setState({
 			dropdownOpen: !this.state.dropdownOpen
@@ -26,31 +33,36 @@ export default class PaymentOutcome extends React.Component {
 	}
 
 	changeMethod(newMethod, newCurrency, newType) {
-		this.props.updateOutcomeMethod(newMethod, newCurrency, newType);
-		this.props.getRate()
+		this.props.updateIncomeMethod(newMethod, newCurrency, newType)
+		this.props.updateRate();
 	}
 
 	componentWillMount(){
 		let directionsList = [];
-		// Сreaing array-list of directions for dropdown menu
-		for ( let i = 0; i < directions.out.length; i++){
-				directionsList.push(<DropdownItem key={'paymentOutcomeMethod'+i} onClick={e => {
-					this.changeMethod(directions.out[i].name, directions.out[i].currency, directions.out[i].type);
-				}}>{directions.out[i].name}</DropdownItem>)
-		}
+		// Сreating array-list of directions for dropdown menu
+		each(directions.in, (item, index) => {
+			directionsList.push(
+				<DropdownItem key={'incomeMethod'+index} onClick={
+					e => { this.changeMethod(item.name, item.currency, item.type ); }
+				}> {item.name} </DropdownItem>
+			)
+		})
+
+
+
 		this.setState({ directions: directionsList })
 	}
 
 	render() {
 		return <InputGroup>
-				<Label for="paymentOutcome">Получаете</Label>
-				<Input id="paymentOutcome" className="paymentOutcome" name="paymentOutcome"
-					defaultValue={ parseFloat(this.props.outcomeAmount).toFixed(2) }
-					//onChange={ e => this.onChangeHandler(e) }
+				<Label for="paymentIncome">Продаете</Label>
+				<Input id="paymentIncome" className="paymentIncome" name="paymentIncome"
+					defaultValue={parseFloat(this.props.incomeAmount).toFixed(2)}
+					onChange={this.handleChange}
 				/>
 
 				<InputGroupButtonDropdown addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
-					<DropdownToggle caret> {this.props.outcomeMethod} </DropdownToggle>
+					<DropdownToggle caret> {this.props.incomeMethod} </DropdownToggle>
 					<DropdownMenu>
 						{ this.state.directions }
 					</DropdownMenu>

@@ -80,7 +80,9 @@ export default class ActivityChart extends React.Component {
 														suggestedMax: 30,
 													},
 													gridLines: {
-														drawBorder: false
+														drawBorder: false,
+														color: 'rgba(255,255,255,.1)',
+          									lineWidth: 0.5,
 													}
 												}
 											],

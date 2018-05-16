@@ -1,7 +1,18 @@
-@import '../../../static/scss/variables';
+@import '../../../scss/variables';
 .intro{
-	display: block;
-	position: relative;
-	background-image: linear-gradient(-45deg, rgba($purple, .1) 0%, $indigo 80%, rgba($purple, .2) 100%);
-	padding: 10em 0 5em 0;
+  display: block;
+  position: relative;
+  background: $indigo;
+  padding: 10em 0 5em 0;
+  z-index: 1;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(-45deg, rgba($purple, .01) -100%, $indigo 30%, $indigo 80%, rgba($purple, .2) 150%);
+  }
 }
+

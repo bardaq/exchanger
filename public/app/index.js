@@ -7,7 +7,7 @@ import configureStore from './store/configureStore';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //import PrivateRoute from './utils/PrivateRoute';
 import '../vendor/bootstrap-4.0.0/scss/bootstrap.scss';
-import '../static/scss/main.scss';
+import '../scss/main.scss';
 
 
 import HomePage from './pages/HomePage';

@@ -1,4 +1,4 @@
-@import '../../../static/scss/variables';
+@import '../../../scss/variables';
 
 .modal-wrapper{
 	position: fixed;
@@ -104,11 +104,10 @@
 		padding: 5em;
 	}
 
-
 	.contacts-modal{
 		margin-top: 5%;
 		padding: 5em 3em 0 3em;
-		background-image: url(../../app/components/Modals/img/envelope.png);
+		background-image: url(../app/components/Modals/img/envelope.png);
 		background-position: 100% 100%;
 		background-repeat:no-repeat;
 	}
