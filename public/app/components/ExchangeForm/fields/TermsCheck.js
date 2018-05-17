@@ -6,14 +6,16 @@ export default class TermsCheck extends React.Component {
 	constructor(props) {
 		super(props);
 	}
+
+	clickHandler(e){
+		this.props.isInvalid ? this.props.errorCleaner('invalidCheck') : null;
+		this.props.agreeWithTerms();
+	}
+
 	render() {
-		return <InputGroup className={this.props.invalidCheck ? 'hasError' : ''} >
+		return <InputGroup className={ this.props.isInvalid ? 'hasError' : '' }>
 			<Label className="exchange-form__checkbox-label">Отправляя форму вы подтверждаете, что введенные данные верны и вы ознакомлены и согласены с условиями <a href="#">Соглашения</a> </Label>
-			<Input type="checkbox" className="exchange-form__checkbox" onClick={ e => {
-				this.props.invalidCheck ? this.props.clearValidation('invalidCheck') : null;
-				this.setState({ isValid: false });
-				this.props.agreeWithTerms();
-			}}/>
+			<Input type="checkbox" className="exchange-form__checkbox" onClick={ e => this.clickHandler(e) }/>
 		</InputGroup>
 	}
 }

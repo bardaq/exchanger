@@ -21,11 +21,9 @@ body.sticky-footer {
     min-height: calc(100vh - #{$sticky-footer-height} - #{$navbar-base-height});
   }
 }
-
 body.fixed-nav {
   padding-top: $navbar-base-height;
 }
-
 .content-wrapper {
   min-height: calc(100vh - #{$sticky-footer-height});
   padding-top: 1rem;

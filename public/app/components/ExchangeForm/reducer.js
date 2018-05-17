@@ -37,14 +37,16 @@ export default function updateMethod(state = initialState, action) {
 			return {
 				...state,
 				incomeAmount: action.payload.incomeAmount,
-				outcomeAmount: action.payload.outcomeAmount }
-				break;
+				outcomeAmount: action.payload.outcomeAmount
+			}
+			break;
 		case UPDATE_INCOME_METHOD:
 			return {
 				...state,
 				incomeMethod: action.payload.method,
 				incomeCurrency: action.payload.currency,
-				incomeType: action.payload.type
+				incomeType: action.payload.type,
+				outcomeAmount: action.payload.outcomeAmount
 			}; break;
 
 		//OUTCOME
@@ -52,14 +54,16 @@ export default function updateMethod(state = initialState, action) {
 			return {
 				...state,
 				outcomeAmount: action.payload.outcomeAmount,
-				incomeAmount: action.payload.incomeAmount }
-				break;
+				incomeAmount: action.payload.incomeAmount
+			}
+			break;
 		case UPDATE_OUTCOME_METHOD:
 			return {
 				...state,
 				outcomeMethod: action.payload.method,
 				outcomeCurrency: action.payload.currency,
-				outcomeType: action.payload.type
+				outcomeType: action.payload.type,
+				incomeAmount: action.payload.incomeAmount
 			}; break;
 
 		//TRANSACTION INFO

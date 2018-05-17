@@ -1,7 +1,7 @@
 export default function validation(transaction, errorSetter){
 	let errors = {};
 
-	if( transaction.paymentAmount < 0.0001 )
+	if( transaction.incomeAmount < 0.0001 )
 		errors = {...errors, invalidPaymentAmount: true};
 
 	if( !(!(/[_]/.test(transaction.accountNum)) && transaction.accountNum !== '' ) )

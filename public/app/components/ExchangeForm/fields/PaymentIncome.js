@@ -11,13 +11,16 @@ export default class PaymentIncome extends React.Component {
 		this.state = {
 			dropdownOpen: false,
 			splitButtonOpen: false,
-			directions: []
+			directions: [],
+			value: this.props.incomeAmount
 		};
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleChange(event) {
-		this.props.updateIncomeAmount(event.target.value);
+	handleChange(e) {
+		this.setState({ value : e.target.value });
+		this.props.isInvalid ? this.props.errorCleaner('invalidPaymentAmount') : null;
+		this.props.updateIncomeAmount(e.target.value);
 	}
 
 	toggleDropDown() {
@@ -34,12 +37,12 @@ export default class PaymentIncome extends React.Component {
 
 	changeMethod(newMethod, newCurrency, newType) {
 		this.props.updateIncomeMethod(newMethod, newCurrency, newType)
-		this.props.updateRate();
+		//this.props.updateRate();
 	}
 
 	componentWillMount(){
-		let directionsList = [];
 		// Сreating array-list of directions for dropdown menu
+		let directionsList = [];
 		each(directions.in, (item, index) => {
 			directionsList.push(
 				<DropdownItem key={'incomeMethod'+index} onClick={
@@ -47,18 +50,20 @@ export default class PaymentIncome extends React.Component {
 				}> {item.name} </DropdownItem>
 			)
 		})
-
-
-
 		this.setState({ directions: directionsList })
 	}
 
+	componentWillReceiveProps(newProps){
+    this.setState({ value: newProps.incomeAmount })
+  }
+
 	render() {
-		return <InputGroup>
+		return <InputGroup className={ this.props.isInvalid ? 'hasError' : '' }>
 				<Label for="paymentIncome">Продаете</Label>
 				<Input id="paymentIncome" className="paymentIncome" name="paymentIncome"
-					defaultValue={parseFloat(this.props.incomeAmount).toFixed(2)}
-					onChange={this.handleChange}
+					//placeholder={ this.props.incomeAmount }
+					onChange={ e => this.handleChange(e) }
+					value={ this.state.value || '0.00' }
 				/>
 
 				<InputGroupButtonDropdown addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>

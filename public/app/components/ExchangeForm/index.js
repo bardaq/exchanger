@@ -15,7 +15,7 @@ import {
 	updateRate,
 } from './actions';
 import { bake_cookie } from 'sfcookies';
-import validateTransaction from './validateTransaction';
+import validator from './validator';
 
 class ExchangeForm extends React.Component {
 	constructor(props) {
@@ -27,13 +27,12 @@ class ExchangeForm extends React.Component {
 			invalidCheck: false,
 			paymentAmountInputWarning: ''
 		}
-		this.clearValidation = this.clearValidation.bind(this);
+		this.errorCleaner = this.errorCleaner.bind(this);
 		this.errorSetter = this.errorSetter.bind(this);
 	}
 
 	errorSetter(errors){ this.setState(errors) }
-
-	clearValidation(property){
+	errorCleaner(property){
 		this.setState({ ...this.state, [property]: false })
 	}
 
@@ -59,6 +58,8 @@ class ExchangeForm extends React.Component {
 				incomeMethod = { this.props.exchangeInfo.incomeMethod }
 				updateIncomeMethod = { this.props.updateIncomeMethod }
 				updateRate = { this.props.updateRate }
+				isInvalid = { this.state.invalidPaymentAmount }
+				errorCleaner = { this.errorCleaner }
 			/>
 			<PaymentOutcome
 				incomeType = { this.props.exchangeInfo.incomeType }
@@ -68,9 +69,21 @@ class ExchangeForm extends React.Component {
 				updateOutcomeMethod = { this.props.updateOutcomeMethod }
 				updateRate = { this.props.updateRate }
 			/>
-			<AccountNumInput updateAccountNum = {this.props.updateAccountNum} />
-			<PhoneInput updatePhone = {this.props.updatePhone} />
-			<TermsCheck agreeWithTerms = {this.props.agreeWithTerms} />
+			<AccountNumInput
+				updateAccountNum = {this.props.updateAccountNum}
+				isInvalid = { this.state.invalidAccountNum }
+				errorCleaner = { this.errorCleaner }
+			/>
+			<PhoneInput
+				updatePhone = {this.props.updatePhone}
+				isInvalid = { this.state.invalidPhone }
+				errorCleaner = { this.errorCleaner }
+			/>
+			<TermsCheck
+				agreeWithTerms = {this.props.agreeWithTerms}
+				isInvalid = { this.state.invalidCheck }
+				errorCleaner = { this.errorCleaner }
+			/>
 
 			<Button className="submit" color="primary" size="lg" onClick={	event => { this.props.isInModal ? null : this.submit() }}> Обменять <span>&#8635;</span>  </Button>
 		</Form>

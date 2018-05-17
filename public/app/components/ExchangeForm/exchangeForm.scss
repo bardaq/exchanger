@@ -92,6 +92,15 @@
 		color: $white;
 	}
 }
+.hasError{
+	input{
+		border-color: rgba($red,.5);
+		box-shadow: 0 0 10px rgba($red,.5);
+	}
+	.form-check-input{
+		box-shadow: 0 0 20px red;
+	}
+}
 @media (min-width: 992px) {
 	.exchangeForm{
 		text-align: left;

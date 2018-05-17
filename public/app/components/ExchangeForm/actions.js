@@ -4,50 +4,61 @@ import {
   UPDATE_ACCOUNT_NUM, UPDATE_PHONE, AGREE_WITH_TERMS,
   UPDATE_RATE, UPDATE_RATE_FETCHING, UPDATE_RATE_FETCHING_ERROR,
 } from '../../constants';
-import getRate from '../../services/GetRate';
+import fetchRate from '../../services/FetchRate';
 
 // INCOME
-export const updateIncomeAmount = newAmount => (dispatch, getState ) => {
+export const updateIncomeAmount = (newAmount, cross = true) => (dispatch, getState ) => {
+  const outcomeAmount = cross ? newAmount * getState().exchangeReducer.rate : getState().exchangeReducer.outcomeAmount;
   dispatch({
     type: UPDATE_INCOME_AMOUNT,
     payload: {
       incomeAmount: newAmount,
-      //directionAmount: newAmount * getState().exchangeReducer.rate
-      outcomeAmount: newAmount
+      outcomeAmount: outcomeAmount.toFixed(2)
     }
   });
 }
-export const updateIncomeMethod = (newMethod, newCurrency, newType) => {
-  return {
+export const updateIncomeMethod = (newMethod, newCurrency, newType) => (dispatch, getState ) => {
+  dispatch({
     type: UPDATE_INCOME_METHOD,
     payload: {
       method: newMethod,
       currency: newCurrency,
       type: newType
     }
-  }
+  });
+  dispatch( updateRate() )
+  .then( () => {
+    const newOutcomeAmouunt = getState().exchangeReducer.incomeAmount * getState().exchangeReducer.rate
+    dispatch( updateOutcomeAmount( newOutcomeAmouunt, false ))
+  });
 }
 
 // OUTCOME
-export const updateOutcomeAmount = newAmount => (dispatch, getState ) => {
+export const updateOutcomeAmount = (newAmount, cross = true) => (dispatch, getState ) => {
+  const incomeAmount = cross ? newAmount / getState().exchangeReducer.rate : getState().exchangeReducer.incomeAmount;
   dispatch({
     type: UPDATE_OUTCOME_AMOUNT,
     payload: {
-      outcomeAmount: newAmount,
-      //directionAmount: newAmount * getState().exchangeReducer.rate
-      //incomeAmount: newAmount
+      outcomeAmount : newAmount,
+      incomeAmount  : incomeAmount.toFixed(2)
     }
   });
 }
-export const updateOutcomeMethod = (newMethod, newCurrency, newType) => {
-  return {
+export const updateOutcomeMethod = (newMethod, newCurrency, newType) => (dispatch, getState ) => {
+  dispatch({
     type: UPDATE_OUTCOME_METHOD,
     payload: {
       method: newMethod,
       currency: newCurrency,
-      type: newType
+      type: newType,
+      //incomeAmount: getState().exchangeReducer.outcomeAmount * getState().exchangeReducer.rate
     }
-  }
+  });
+  dispatch( updateRate() )
+  .then( () => {
+    const newIncomeAmouunt = getState().exchangeReducer.outcomeAmount * getState().exchangeReducer.rate
+    dispatch( updateIncomeAmount( newIncomeAmouunt, false ))
+  });
 }
 
 
@@ -76,24 +87,33 @@ export const agreeWithTerms = () => (dispatch, getState) => {
 
 //UPDATE RATE
 export const updateRate = () => (dispatch, getState) => {
-  dispatch({
-    type: UPDATE_RATE_FETCHING,
-    payload: {
-      rateFatching: true,
-      rateFetchingError: false
-    }
-  });
-  getRate(
-    getState().exchangeReducer.incomeCurrency, getState().exchangeReducer.incomeType,
-    getState().exchangeReducer.outcomeCurrency, getState().exchangeReducer.outcomeType
-  )
-  .then(data => {
-    dispatch({ type: UPDATE_RATE, payload: { rate: data, rateFatching: false, rateFetchingError: false } });
-  })
-  .then(null, data => {
+  return new Promise(resolve => {
     dispatch({
-      type: UPDATE_RATE_FETCHING_ERROR,
-      payload: { rateFatching: false, rateFetchingError: true }
+      type: UPDATE_RATE_FETCHING,
+      payload: {
+        rateFatching: true,
+        rateFetchingError: false
+      }
     });
+    fetchRate(
+      getState().exchangeReducer.incomeCurrency, getState().exchangeReducer.incomeType,
+      getState().exchangeReducer.outcomeCurrency, getState().exchangeReducer.outcomeType
+    )
+    .then(data => {
+      resolve( dispatch({
+        type: UPDATE_RATE,
+        payload: {
+          rate: data,
+          rateFatching: false,
+          rateFetchingError: false
+        }
+      }));
+    })
+    .then(null, data => {
+      dispatch({
+        type: UPDATE_RATE_FETCHING_ERROR,
+        payload: { rateFatching: false, rateFetchingError: true }
+      });
+    })
   })
 };

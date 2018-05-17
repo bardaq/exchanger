@@ -1,10 +1,9 @@
 import * as _ from 'lodash';
 import { RUB, UAH, USD } from '../../config';
 
-export default function getRate( incomeCurr, incomeCurrType, outcomeCurr, outcomeCurrType){
+export default function fetchRate( incomeCurr, incomeCurrType, outcomeCurr, outcomeCurrType){
   let rate = '0';
-  let ratePromise = new Promise( (resolve, reject) => {
-
+  return new Promise( (resolve, reject) => {
     /////////////////////////////
     //
     // FIAT => FIAT
@@ -46,8 +45,6 @@ export default function getRate( incomeCurr, incomeCurrType, outcomeCurr, outcom
       });
     }
   })
-
-  return ratePromise;
 }
 
 // Privat API
