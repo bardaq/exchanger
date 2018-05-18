@@ -24,8 +24,8 @@ export const create = (req, res) => {
 		accountNum: req.body.accountNum,
 	});
 	transaction.save((err, transaction) => {
-		if (err) return res.status(500).send(`Error while creating transaction: ${err}`);
-		return res.status(200).send(`Transaction created: ${transaction}`);
+		if (err) return res.status(500).send(`{ "Error while creating transaction" : "${err}" }`);
+		return res.status(200).send(`{ "Transaction created" : "${transaction}" }`);
 	})
 }
 

@@ -5,7 +5,7 @@ import db from './db';
 import * as User from './controllers/user';
 import * as Transaction from './controllers/transactions';
 import * as Summaries from './controllers/activitySummaries';
-import { cronTasks } from './cron/cron'
+import { cronTasks } from './cron/cron';
 // import { sendContactEmail } from './controllers/emailSender';
 
 const app = express();
