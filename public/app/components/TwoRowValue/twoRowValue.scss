@@ -1,0 +1,15 @@
+@import '../../../scss/variables';
+.two-row-value{
+	.two-row-value_text{
+		font-size: 1em;
+	}
+	.two-row-value__big-val{
+		display: block;
+		font-size: 2.5em;
+		text-transform: uppercase;
+	}
+	.two-row-value__val{
+		display: block;
+		font-size: .8em;
+	}
+}

@@ -72,13 +72,6 @@ export default function updateMethod(state = initialState, action) {
 			return { ...state, agreeWithTerms: action.payload.agreeWithTerms }
 			break;
 
-		case CREATE_DATASTAMP:
-			return {...state, dataStamp: action.payload.dataStamp};
-			break;
-		case CREATE_TRANSACTION:
-			return state;
-			break;
-
 		default:
 			return state
 	}

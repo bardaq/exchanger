@@ -1,4 +1,4 @@
-import { UPDATE_RATE, UPDATE_RATE_FETCHING, UPDATE_RATE_FETCHING_ERROR } from '../../constants';
+  import { UPDATE_RATE, UPDATE_RATE_FETCHING, UPDATE_RATE_FETCHING_ERROR } from '../../constants';
 import fetchRate from './fetchRate';
 
 export const updateRate = () => (dispatch, getState) => {

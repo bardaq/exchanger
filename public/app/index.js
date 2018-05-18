@@ -12,9 +12,8 @@ import '../scss/main.scss';
 
 import HomePage from './pages/HomePage';
 import TermsAndConditionsPage from './pages/TermsAndConditionsPage';
-//import TransactionPage from './containers/TransactionPage';
-//import ContactsPage from './components/ContactsPage';
-//import AccountPage from './containers/AccountPage';
+import TransactionPage from './pages/TransactionPage';
+//import AccountPage from './pages/AccountPage';
 
 const store = configureStore();
 
@@ -24,8 +23,8 @@ render(
 			<Switch>
 				<Route exact path='/' component={HomePage}/>
 				<Route path='/terms' component={TermsAndConditionsPage}/>
-				{/*<Route path='/transaction(\d{13}?)' component={TransactionPage}/>
-				<PrivateRoute path='/account' component={AccountPage}/>*/}
+				<Route path='/transaction(\d{13}?)' component={TransactionPage}/>
+				{/*<PrivateRoute path='/account' component={AccountPage}/>*/}
 			</Switch>
 		</BrowserRouter>
 	</Provider>,
