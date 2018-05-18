@@ -22,6 +22,13 @@ export default class PaymentOutcome extends React.Component {
     this.props.updateOutcomeAmount(e.target.value);
   }
 
+  pressHandler(e){
+    const containsPeriod = String(this.state.value).includes('.');
+    if(( isNaN(e.key) && e.key !== '.') || ( e.key === '.' && containsPeriod )) {
+      e.preventDefault(); console.log('dis');
+    }
+  }
+
   toggleDropDown() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
@@ -36,7 +43,6 @@ export default class PaymentOutcome extends React.Component {
 
   changeMethod(newMethod, newCurrency, newType) {
     this.props.updateOutcomeMethod(newMethod, newCurrency, newType);
-    //this.props.updateRate();
   }
 
   componentWillMount(){
@@ -60,9 +66,10 @@ export default class PaymentOutcome extends React.Component {
     return <InputGroup>
         <Label for="paymentOutcome">Получаете</Label>
         <Input id="paymentOutcome" className="paymentOutcome" name="paymentOutcome"
-          //placeholder= { this.props.outcomeAmount }
+          onKeyPress= { e => this.pressHandler(e) }
           onChange={ e => this.handleChange(e) }
-          value={ this.state.value || '0.00'}
+          placeholder={ '0.00' }
+          value={ this.state.value || ''}
         />
 
         <InputGroupButtonDropdown addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>

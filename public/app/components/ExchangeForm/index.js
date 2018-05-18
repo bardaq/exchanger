@@ -9,13 +9,15 @@ import PaymentOutcome from './fields/PaymentOutcome';
 import AccountNumInput from './fields/AccountNumInput';
 import PhoneInput from './fields/PhoneInput';
 import TermsCheck from './fields/TermsCheck';
+import validate from './validator';
+
 import {
 	updateIncomeAmount, updateOutcomeAmount, updateIncomeMethod,
 	updateOutcomeMethod, updatePhone, agreeWithTerms, updateAccountNum,
-	updateRate,
+	createDataStamp, actionCreateTransaction
 } from './actions';
+import { updateRate } from '../../services/UpdateRate';
 import { bake_cookie } from 'sfcookies';
-import validator from './validator';
 
 class ExchangeForm extends React.Component {
 	constructor(props) {
@@ -37,17 +39,17 @@ class ExchangeForm extends React.Component {
 	}
 
 	async submit(){
-		if (validateTransaction(this.props.exchangeInfo, this.errorSetter) === 'valid'){
+		if (validate(this.props.exchangeInfo, this.errorSetter) === 'valid'){
 			await this.props.createDataStamp();
 			const transaction = { ...this.props.exchangeInfo, dataStamp: this.props.dataStamp };
 			this.props.actionCreateTransaction( transaction );
 			bake_cookie( 'transaction', transaction );
 			this.props.history.push('/transaction' + this.props.dataStamp);
-		} else { return console.log('invalid') }
+		}
 	}
 
 	componentDidMount(){
-		this.props.updateRate();
+		this.props.updateRate()
 	}
 
 	render() {
@@ -85,7 +87,10 @@ class ExchangeForm extends React.Component {
 				errorCleaner = { this.errorCleaner }
 			/>
 
-			<Button className="submit" color="primary" size="lg" onClick={	event => { this.props.isInModal ? null : this.submit() }}> Обменять <span>&#8635;</span>  </Button>
+			<Button className="submit" color="primary" size="lg"
+				onClick={	e => { this.props.isInModal ? null : this.submit() }}>
+				Обменять <span>&#8635;</span>
+			</Button>
 		</Form>
 	}
 }
@@ -95,18 +100,13 @@ function mapDispatchToProps(dispatch){
 		updateIncomeMethod, updateOutcomeMethod,
 		updateIncomeAmount, updateOutcomeAmount,
 		updateAccountNum, updatePhone, agreeWithTerms,
-		updateRate
-		// createDataStamp,
-		// actionCreateTransaction
+		updateRate,
+		createDataStamp,actionCreateTransaction
 	}, dispatch);
 }
 
 export default withRouter(connect(
-	state => ({
-		exchangeInfo: state.exchangeReducer,
-		// method: state.exchangeInfoReducer.method,
-		// dataStamp: state.transactionsCreatorReducer.dataStamp
-	}),
+	state => ({ exchangeInfo: state.exchangeReducer }),
 	mapDispatchToProps
 )(ExchangeForm))
 

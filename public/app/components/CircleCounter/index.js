@@ -1,11 +1,9 @@
 import React from "react";
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateRate } from '../../services/UpdateRate';
 
-
-// TODO:
-// dispatch 'updateRate' each minute
-
-class circleCounter extends React.Component {
+class CircleCounter extends React.Component {
   constructor(props) {
     super(props);
     this.oneTick = 301 / 60 / 100;
@@ -21,6 +19,7 @@ class circleCounter extends React.Component {
       this.startCounterInstance = setTimeout( () => {
         if( this.state.progress > 300 ) {
           clearTimeout(this.startCounterInstance);
+          this.props.updateRate();
           return this.resetCounter();
         }
         this.tick();
@@ -98,13 +97,13 @@ class circleCounter extends React.Component {
   }
 }
 
+function mapDispatchToProps(dispatch){ return bindActionCreators({ updateRate }, dispatch); }
 function putStoreToProps(state){
   return{
     currency: state.exchangeReducer.outcomeCurrency,
-    rate: state.exchangeReducer.rate,
-    rateFetching: state.exchangeReducer.rateFetching,
-    rateFetchingError: state.exchangeReducer.rateFetchingError
+    rate: state.rateReducer.rate,
+    rateFetching: state.rateReducer.rateFetching,
+    rateFetchingError: state.rateReducer.rateFetchingError
   }
 }
-
-export default connect(putStoreToProps)(circleCounter)
+export default connect( putStoreToProps, mapDispatchToProps )(CircleCounter)

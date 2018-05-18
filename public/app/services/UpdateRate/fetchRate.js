@@ -1,13 +1,11 @@
 import * as _ from 'lodash';
 import { RUB, UAH, USD } from '../../config';
 
-export default function fetchRate( incomeCurr, incomeCurrType, outcomeCurr, outcomeCurrType){
+export default function fetchRate(incomeCurr, incomeCurrType, outcomeCurr, outcomeCurrType){
   let rate = '0';
   return new Promise( (resolve, reject) => {
     /////////////////////////////
-    //
     // FIAT => FIAT
-    //
     /////////////////////////////
     if (incomeCurrType === 'fiat' && outcomeCurrType === 'fiat'){
       fetch('http://www.apilayer.net/api/live?access_key=050ddb2414effd04a07cd6147eacc4a1&format=1')
@@ -20,11 +18,9 @@ export default function fetchRate( incomeCurr, incomeCurrType, outcomeCurr, outc
       })
       .then(data => { resolve(rate.toFixed(2)) })
     } else {
-      /////////////////////////////
-      //
-      // COIN/FIAT => COIN/FIAT
-      //
-      /////////////////////////////
+    /////////////////////////////
+    // COIN/FIAT => COIN/FIAT
+    /////////////////////////////
 
       // geting coin id from listing
       fetch('https://api.coinmarketcap.com/v2/listings/')
@@ -32,7 +28,7 @@ export default function fetchRate( incomeCurr, incomeCurrType, outcomeCurr, outc
       .then(data => {
         const id = _.find(data.data, item => { return item.symbol ===  ( outcomeCurrType === 'coin' ? outcomeCurr : incomeCurr ) }).id;
 
-        // geting coin rate
+        // geting coin rate by id
         fetch(`https://api.coinmarketcap.com/v2/ticker/${id}/?convert=${outcomeCurrType === 'coin' ? incomeCurr : outcomeCurr}`)
         .then(data => data.json())
         .then(data => {

@@ -23,6 +23,13 @@ export default class PaymentIncome extends React.Component {
 		this.props.updateIncomeAmount(e.target.value);
 	}
 
+	pressHandler(e){
+		const containsPeriod = String(this.state.value).includes('.');
+		if(( isNaN(e.key) && e.key !== '.') || ( e.key === '.' && containsPeriod )) {
+			e.preventDefault(); console.log('dis');
+		}
+	}
+
 	toggleDropDown() {
 		this.setState({
 			dropdownOpen: !this.state.dropdownOpen
@@ -61,9 +68,10 @@ export default class PaymentIncome extends React.Component {
 		return <InputGroup className={ this.props.isInvalid ? 'hasError' : '' }>
 				<Label for="paymentIncome">Продаете</Label>
 				<Input id="paymentIncome" className="paymentIncome" name="paymentIncome"
-					//placeholder={ this.props.incomeAmount }
 					onChange={ e => this.handleChange(e) }
-					value={ this.state.value || '0.00' }
+					onKeyPress={ e => this.pressHandler(e) }
+					placeholder={ '0.00' }
+					value={ this.state.value || '' }
 				/>
 
 				<InputGroupButtonDropdown addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>

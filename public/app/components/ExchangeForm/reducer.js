@@ -1,8 +1,7 @@
 import{
 	UPDATE_INCOME_AMOUNT, UPDATE_INCOME_METHOD, UPDATE_OUTCOME_AMOUNT, UPDATE_OUTCOME_METHOD,
 	UPDATE_PHONE, UPDATE_ACCOUNT_NUM, AGREE_WITH_TERMS,
-	UPDATE_RATE, UPDATE_RATE_FETCHING, UPDATE_RATE_FETCHING_ERROR
-	//CREATE_TRANSACTION, CREATE_DATASTAMP
+	CREATE_TRANSACTION, CREATE_DATASTAMP
 } from '../../constants';
 import { directions } from '../../config';
 
@@ -21,10 +20,6 @@ const initialState = {
 	accountNum: '',
 	phone: '',
 	agreeWithTerms: false,
-
-	rate: "00000.00",
-	rateFetching: false,
-	rateFetchingError: false,
 	dataStamp: 0
 }
 
@@ -77,35 +72,12 @@ export default function updateMethod(state = initialState, action) {
 			return { ...state, agreeWithTerms: action.payload.agreeWithTerms }
 			break;
 
-		//SERVICES
-		case UPDATE_RATE:
-			return {
-				...state,
-				rate: action.payload.rate,
-				rateFetchingError: action.payload.rateFatchingError,
-				rateFetching: action.payload.rateFatching
-			}
+		case CREATE_DATASTAMP:
+			return {...state, dataStamp: action.payload.dataStamp};
 			break;
-		case UPDATE_RATE_FETCHING:
-			return {
-				...state,
-				rateFetchingError: action.payload.rateFatchingError,
-				rateFetching: action.payload.rateFatching
-			}
+		case CREATE_TRANSACTION:
+			return state;
 			break;
-		case UPDATE_RATE_FETCHING_ERROR:
-			return {
-				...state,
-				rateFetchingError: action.payload.rateFetchingError,
-				rateFetching: action.payload.rateFetching,
-			}
-			break;
-		// case CREATE_DATASTAMP:
-		// 	return {...state, dataStamp: action.payload.dataStamp};
-		// 	break;
-		// case CREATE_TRANSACTION:
-		// 	return state;
-		// 	break;
 
 		default:
 			return state
