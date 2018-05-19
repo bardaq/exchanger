@@ -3,6 +3,7 @@ import {
   UPDATE_OUTCOME_AMOUNT, UPDATE_OUTCOME_METHOD,
   UPDATE_ACCOUNT_NUM, UPDATE_PHONE, AGREE_WITH_TERMS,
 } from '../../constants';
+
 import { updateRate } from '../../services/UpdateRate';
 
 // INCOME
