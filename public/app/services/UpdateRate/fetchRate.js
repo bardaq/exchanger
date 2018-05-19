@@ -13,10 +13,9 @@ export default function fetchRate(incomeCurr, incomeCurrType, outcomeCurr, outco
       .then(data => {
         const usdToIncome = _.find(data.quotes, (item, index) => { return index === 'USD'+incomeCurr })
         const usdToOutcome = _.find(data.quotes, (item, index) => { return index === 'USD'+outcomeCurr })
-        rate = (1/usdToIncome) * usdToOutcome;
-
+        rate = Number((1/usdToIncome) * usdToOutcome).toFixed(2);
       })
-      .then(data => { resolve(rate.toFixed(2)) })
+      .then(data => { resolve(rate) })
     } else {
     /////////////////////////////
     // COIN/FIAT => COIN/FIAT
@@ -33,10 +32,10 @@ export default function fetchRate(incomeCurr, incomeCurrType, outcomeCurr, outco
         .then(data => data.json())
         .then(data => {
           outcomeCurrType === 'coin'
-          ? rate = 1/data.data.quotes[incomeCurr].price
-          : rate = data.data.quotes[outcomeCurr].price
+          ? rate = Number(1/data.data.quotes[incomeCurr].price).toFixed(6)
+          : rate = Number(data.data.quotes[outcomeCurr].price).toFixed(2)
         })
-        .then(data => { resolve(rate.toFixed(2)) })
+        .then(data => { resolve(rate) })
         .then(null, error => { reject(error)})
       });
     }

@@ -7,12 +7,14 @@ import { updateRate } from '../../services/UpdateRate';
 
 // INCOME
 export const updateIncomeAmount = (newAmount, cross = true) => (dispatch, getState ) => {
-  const outcomeAmount = cross ? newAmount * getState().rateReducer.rate : getState().exchangeReducer.outcomeAmount;
+  const outcomeAmount = cross ? newAmount * getState().rateReducer.rate : getState().exchangeReducer.outcomeAmount,
+        isCoin = getState().exchangeReducer.outcomeType === 'coin',
+        roundedAmount = isCoin ? Number(outcomeAmount).toFixed(6) : Number(outcomeAmount).toFixed(2);
   dispatch({
     type: UPDATE_INCOME_AMOUNT,
     payload: {
       incomeAmount: newAmount,
-      outcomeAmount: outcomeAmount.toFixed(2)
+      outcomeAmount: roundedAmount
     }
   });
 }
@@ -34,12 +36,14 @@ export const updateIncomeMethod = (newMethod, newCurrency, newType) => (dispatch
 
 // OUTCOME
 export const updateOutcomeAmount = (newAmount, cross = true) => (dispatch, getState ) => {
-  const incomeAmount = cross ? newAmount / getState().rateReducer.rate : getState().exchangeReducer.incomeAmount;
+  const incomeAmount = cross ? newAmount / getState().rateReducer.rate : getState().exchangeReducer.incomeAmount,
+        isCoin = getState().exchangeReducer.incomeType === 'coin',
+        roundedAmount = isCoin ? Number(incomeAmount).toFixed(6) : Number(incomeAmount).toFixed(2);
   dispatch({
     type: UPDATE_OUTCOME_AMOUNT,
     payload: {
       outcomeAmount : newAmount,
-      incomeAmount  : incomeAmount.toFixed(2)
+      incomeAmount  : incomeAmount
     }
   });
 }

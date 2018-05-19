@@ -100,6 +100,7 @@ class CircleCounter extends React.Component {
 function mapDispatchToProps(dispatch){ return bindActionCreators({ updateRate }, dispatch); }
 function putStoreToProps(state){
   return{
+    outcomeType: state.exchangeReducer.outcomeType,
     currency: state.exchangeReducer.outcomeCurrency,
     rate: state.rateReducer.rate,
     rateFetching: state.rateReducer.rateFetching,

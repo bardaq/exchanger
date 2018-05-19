@@ -17,11 +17,11 @@ export default class AccountNumInput extends React.Component {
       <Label for="direction">На счет</Label>
       <MaskedInput
         id="direction" className="direction form-control"
-        placeholder="1234 5678 9098 7654" mask="1111 1111 1111 1111"
+        placeholder={this.props.outcomeType === 'fiat' ? '1234 5678 9098 7654' : 'адрес крипто-кошелька'}
+        mask={this.props.outcomeType === 'fiat' ? '1234 5678 9098 7654' : '****************************************************************'}
         onChange={e => this.changeHandler(e)}
       />
     </InputGroup>
   }
 }
-
 

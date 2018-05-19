@@ -72,6 +72,7 @@ class ExchangeForm extends React.Component {
 				updateRate = { this.props.updateRate }
 			/>
 			<AccountNumInput
+				outcomeType = { this.props.exchangeInfo.outcomeType }
 				updateAccountNum = {this.props.updateAccountNum}
 				isInvalid = { this.state.invalidAccountNum }
 				errorCleaner = { this.errorCleaner }
