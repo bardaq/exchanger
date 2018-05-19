@@ -8,13 +8,13 @@ import { updateRate } from '../../services/UpdateRate';
 // INCOME
 export const updateIncomeAmount = (newAmount, cross = true) => (dispatch, getState ) => {
   const outcomeAmount = cross ? newAmount * getState().rateReducer.rate : getState().exchangeReducer.outcomeAmount,
-        isCoin = getState().exchangeReducer.outcomeType === 'coin',
-        roundedAmount = isCoin ? Number(outcomeAmount).toFixed(6) : Number(outcomeAmount).toFixed(2);
+        outcomeIsCoin = getState().exchangeReducer.outcomeType === 'coin',
+        incomeIsCoin = getState().exchangeReducer.incomeType === 'coin';
   dispatch({
     type: UPDATE_INCOME_AMOUNT,
     payload: {
-      incomeAmount: newAmount,
-      outcomeAmount: roundedAmount
+      incomeAmount: incomeIsCoin ?  Number(newAmount).toFixed(6) : Number(newAmount).toFixed(2),
+      outcomeAmount: outcomeIsCoin ? Number(outcomeAmount).toFixed(6) : Number(outcomeAmount).toFixed(2)
     }
   });
 }
@@ -37,13 +37,13 @@ export const updateIncomeMethod = (newMethod, newCurrency, newType) => (dispatch
 // OUTCOME
 export const updateOutcomeAmount = (newAmount, cross = true) => (dispatch, getState ) => {
   const incomeAmount = cross ? newAmount / getState().rateReducer.rate : getState().exchangeReducer.incomeAmount,
-        isCoin = getState().exchangeReducer.incomeType === 'coin',
-        roundedAmount = isCoin ? Number(incomeAmount).toFixed(6) : Number(incomeAmount).toFixed(2);
+        incomeIsCoin = getState().exchangeReducer.incomeType === 'coin',
+        outcomeIsCoin = getState().exchangeReducer.outcomeType === 'coin';
   dispatch({
     type: UPDATE_OUTCOME_AMOUNT,
     payload: {
-      outcomeAmount : newAmount,
-      incomeAmount  : incomeAmount
+      outcomeAmount : outcomeIsCoin ? Number(newAmount).toFixed(6) : Number(newAmount).toFixed(2),
+      incomeAmount  : incomeIsCoin ? Number(incomeAmount).toFixed(6) : Number(incomeAmount).toFixed(2)
     }
   });
 }

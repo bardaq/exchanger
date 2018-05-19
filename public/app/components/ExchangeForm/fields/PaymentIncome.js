@@ -44,7 +44,6 @@ export default class PaymentIncome extends React.Component {
 
 	changeMethod(newMethod, newCurrency, newType) {
 		this.props.updateIncomeMethod(newMethod, newCurrency, newType)
-		//this.props.updateRate();
 	}
 
 	componentWillMount(){

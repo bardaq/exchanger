@@ -4,9 +4,11 @@ export default function validation(transaction, errorSetter){
 	if( transaction.incomeAmount < 0.0001 )
 		errors = {...errors, invalidPaymentAmount: true};
 
-	// if( !(!(/[_]/.test(transaction.accountNum)) && transaction.accountNum !== '' ) )
-	// 	errors = {...errors, invalidAccountNum: true};
+	// invalid if contains '_' or empty
+	if( !(!(/[_]/.test(transaction.accountNum)) && transaction.accountNum !== '' ) )
+		errors = {...errors, invalidAccountNum: true};
 
+	// invalid if contains '_' or empty
 	if( !(!(/[_]/.test(transaction.phone)) && transaction.phone !== '') )
 		errors = {...errors, invalidPhone: true};
 

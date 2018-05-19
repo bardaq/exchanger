@@ -73,6 +73,7 @@ class ExchangeForm extends React.Component {
 			/>
 			<AccountNumInput
 				outcomeType = { this.props.exchangeInfo.outcomeType }
+				outcomeCurrency = { this.props.exchangeInfo.outcomeCurrency }
 				updateAccountNum = {this.props.updateAccountNum}
 				isInvalid = { this.state.invalidAccountNum }
 				errorCleaner = { this.errorCleaner }

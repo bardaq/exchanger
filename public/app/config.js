@@ -90,7 +90,7 @@ export const directions = {
 			fee: 4
 		},
 		{
-			name: 'Liteoin',
+			name: 'LiteCoin',
 			type: 'coin',
 			currency: LTC,
 			wallet: 'adfasd131231j2h3fh4hg13134jnk',
