@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Card,
-  CardBody,
-  Collapse
-} from 'reactstrap';
+import { Container, Row, Col, Button, Card, CardBody, Collapse } from 'reactstrap';
 
 
 export default class FaqItem extends React.Component {
