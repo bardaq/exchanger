@@ -13,7 +13,7 @@ export const updateIncomeAmount = (newAmount, cross = true) => (dispatch, getSta
   dispatch({
     type: UPDATE_INCOME_AMOUNT,
     payload: {
-      incomeAmount: incomeIsCoin ?  Number(newAmount).toFixed(6) : Number(newAmount).toFixed(2),
+      incomeAmount: newAmount,
       outcomeAmount: outcomeIsCoin ? Number(outcomeAmount).toFixed(6) : Number(outcomeAmount).toFixed(2)
     }
   });
@@ -42,7 +42,7 @@ export const updateOutcomeAmount = (newAmount, cross = true) => (dispatch, getSt
   dispatch({
     type: UPDATE_OUTCOME_AMOUNT,
     payload: {
-      outcomeAmount : outcomeIsCoin ? Number(newAmount).toFixed(6) : Number(newAmount).toFixed(2),
+      outcomeAmount : newAmount,
       incomeAmount  : incomeIsCoin ? Number(incomeAmount).toFixed(6) : Number(incomeAmount).toFixed(2)
     }
   });
