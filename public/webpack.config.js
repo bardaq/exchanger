@@ -39,6 +39,7 @@ const devServer = () => {
 		}
 	}
 }
+
 const common = merge([
 	{
 		entry: path.join(__dirname, "app", "index.js"),

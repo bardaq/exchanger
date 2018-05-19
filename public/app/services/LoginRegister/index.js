@@ -3,7 +3,7 @@ import { actionToogleModal } from '../../components/Modals/actions';
 import { login as actionLogin, register as actionRegister } from './actions';
 import { bake_cookie } from 'sfcookies';
 
-export function login(phone, password, warningSetter){
+export function login(phone, password, warningSetter, cb){
 	fetch( LOGIN_API_URL, {
 		method: 'post',
 		headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
@@ -18,7 +18,7 @@ export function login(phone, password, warningSetter){
 	.then( data => {
 		if( data ){
 			actionToogleModal();
-			window.location.pathname = `/account`;
+			cb();
 		}
 	})
 }

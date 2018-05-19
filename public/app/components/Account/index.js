@@ -20,6 +20,8 @@ export default class AccountPage extends React.Component {
 							phone: {user.phone}
 						</code>
 					</Col>
+				</Row>
+				<Row>
 					<Col className="text-center mt-5">
 						<Link className='btn btn-primary' to='/'>На главную</Link>
 					</Col>

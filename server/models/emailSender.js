@@ -1,4 +1,6 @@
-const apiPrivat = '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',
+//import SENDGRID_KEY from '../variables.env';
+//const apiPrivat = SENDGRID_KEY,
+const apiPrivat = 'apikey',
 			helper = require('sendgrid').mail,
 			fromEmail = new helper.Email('no-reply@example.com', 'coinBase');
 

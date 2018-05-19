@@ -6,14 +6,14 @@ export const init = (req, res) => {
 		if (err) return res.status(500).send(`Can not clear summaries array: ${err}`);
 	});
 	const mockSummaryArray = [
-		{ date: '28.02.18', activity: '1' },
-		{ date: '01.03.18', activity: '2' },
-		{ date: '02.03.18', activity: '6' },
-		{ date: '03.03.18', activity: '12' },
-		{ date: '04.03.18', activity: '4' },
-		{ date: '05.03.18', activity: '9' },
-		{ date: '06.03.18', activity: '12' },
-		{ date: '07.03.18', activity: '30' },
+		{ date: '28.04.18', activity: '1' },
+		{ date: '01.05.18', activity: '2' },
+		{ date: '02.05.18', activity: '6' },
+		{ date: '03.05.18', activity: '12' },
+		{ date: '04.05.18', activity: '4' },
+		{ date: '05.05.18', activity: '9' },
+		{ date: '06.05.18', activity: '12' },
+		{ date: '07.05.18', activity: '30' },
 	];
 	Summaries.insertMany(mockSummaryArray, (err, result) => {
 		console.log(result);

@@ -3,8 +3,9 @@ import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 import validationAuth from '../validationAuth';
 import { login, register } from '../../../services/LoginRegister';
+import { withRouter } from 'react-router';
 
-export default class LoginRegisterModal extends React.Component {
+class LoginRegisterModal extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
@@ -19,6 +20,7 @@ export default class LoginRegisterModal extends React.Component {
 		this.loginSubmitHandler = ::this.loginSubmitHandler;
 		this.registerOrLoginToogler = ::this.registerOrLoginToogler;
 		this.warningSetter = ::this.warningSetter;
+		this.redirect = ::this.redirect;
 	}
 
 	registerOrLoginToogler(t){ this.setState({registerOrLogin: t}) }
@@ -29,7 +31,11 @@ export default class LoginRegisterModal extends React.Component {
 		const phone = this.state.phone,
 					pwd = this.state.password,
 					isValid = validationAuth(phone, pwd);
-		isValid == 'valid' ? login(phone, pwd, this.warningSetter) : this.setState(isValid)
+		isValid == 'valid' ? login(phone, pwd, this.warningSetter, this.redirect) : this.setState(isValid)
+	}
+
+	redirect(){
+		this.props.history.push('/account')
 	}
 
 	registerSubmitHandler(){
@@ -64,3 +70,5 @@ export default class LoginRegisterModal extends React.Component {
 		} else { return null }
 	}
 }
+
+export default withRouter(LoginRegisterModal)
