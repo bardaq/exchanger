@@ -1,11 +1,11 @@
 // -------------- URL'S ------------------------//
-export const CREATE_TRANSACTION_API_URL = 'http://dexchange.tk:3001/createTransaction',
-						GET_RATE_API_URL = 'http://dexchange.tk:3001/getRate',
-						REGISTER_API_URL = 'http://dexchange.tk:3001/register',
-						LOGIN_API_URL = 'http://dexchange.tk:3001/login',
-						CHECK_TOKEN_API_URL = 'http://dexchange.tk:3001/isLogged',
-						GET_ACTIVITY_SUMMARIES_API_URL = 'http://dexchange.tk:3001/getActivitySummaries',
-						GET_CONFIG_API_URL = 'http://dexchange.tk:3001/getConfig',
+export const CREATE_TRANSACTION_API_URL = 'http://dexchanger.tk:3001/createTransaction',
+						GET_RATE_API_URL = 'http://dexchanger.tk:3001/getRate',
+						REGISTER_API_URL = 'http://dexchanger.tk:3001/register',
+						LOGIN_API_URL = 'http://dexchanger.tk:3001/login',
+						CHECK_TOKEN_API_URL = 'http://dexchanger.tk:3001/isLogged',
+						GET_ACTIVITY_SUMMARIES_API_URL = 'http://dexchanger.tk:3001/getActivitySummaries',
+						GET_CONFIG_API_URL = 'http://dexchanger.tk:3001/getConfig',
 						BTC = 'BTC', ETH = 'ETH', LTC = 'LTC', XMR = 'XMR', XRP = 'XRP',
 						DASH = 'DASH', UAH = 'UAH', RUB = 'RUB', KZT = 'KZT', BYN = 'BYN', USD = 'USD';
 

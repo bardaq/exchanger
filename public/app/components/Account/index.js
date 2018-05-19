@@ -21,7 +21,7 @@ export default class AccountPage extends React.Component {
 						</code>
 					</Col>
 				</Row>
-				<Row>
+				<Row>3
 					<Col className="text-center mt-5">
 						<Link className='btn btn-primary' to='/'>На главную</Link>
 					</Col>
