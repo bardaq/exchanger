@@ -9,10 +9,8 @@ export default class NeedSendBlock extends React.Component {
 
 	createQR(m){
 		const qr = qrcode(4,'H');
-			qr.addData(m);
-			qr.make();
-
-
+		qr.addData(m);
+		qr.make();
 		document.getElementById('qr-code-container').innerHTML = qr.createImgTag(7,4);
 	}
 

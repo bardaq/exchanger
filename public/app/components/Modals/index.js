@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionToogleModal } from './actionToogleModal';
+import { actionToogleModal } from './actions';
 
 import { Container, Row, Col } from 'reactstrap';
 import ContactsModal from './modals/ContactsModal'

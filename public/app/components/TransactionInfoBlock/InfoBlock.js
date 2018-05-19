@@ -26,30 +26,30 @@ export default class InfoBlock extends React.Component {
 		return ( <div className='transaction-info-block'>
 			<h2>Заказ ожидает  оплаты</h2>
 			<p>Чтобы совершить обмен переведите {this.props.incomeAmount} btc на адрес {this.props.wallet}. Избежать ошибок можно воспользовавшись QR кодом справа. Как только транзакция получит 1 подтверждение – мы переведем вам деньги на  карту {this.props.accountNum}. Перевод будет выполнен от физ. лица без комментариев.</p>
-			<Table striped>
+			<Table striped responsive>
 				<tbody>
 					<tr>
-						<th scope="row">Резерв суммы</th>
+						<th>Резерв суммы</th>
 						<td>{this.props.outcomeAmount} {this.props.outcomeCurrency} ( <Countdown date={this.props.dataStamp + 1000*60*60} renderer={ this.renderer } /> )</td>
 					</tr>
 					<tr>
-						<th scope="row">Резерв курса</th>
+						<th>Резерв курса</th>
 						<td>{this.props.rate} {this.props.outcomeCurrency} ( <Countdown date={this.props.dataStamp + 1000*60*60} renderer={ this.renderer } /> )</td>
 					</tr>
 					<tr>
-						<th scope="row">Отдаете</th>
+						<th>Отдаете</th>
 						<td>{this.props.incomeAmount} btc</td>
 					</tr>
 					<tr>
-						<th scope="row">На  адрес</th>
+						<th>На  адрес</th>
 						<td>{this.props.wallet}</td>
 					</tr>
 					<tr>
-						<th scope="row">Получаете</th>
+						<th>Получаете</th>
 						<td>{this.props.outcomeAmount} {this.props.outcomeCurrency}</td>
 					</tr>
 					<tr>
-						<th scope="row">На карту</th>
+						<th>На карту</th>
 						<td>{this.props.accountNum}</td>
 					</tr>
 				</tbody>

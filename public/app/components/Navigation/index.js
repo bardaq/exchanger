@@ -5,7 +5,7 @@ import { Button, Collapse, Navbar, NavbarToggler, NavbarBrand,
   Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle,
   DropdownMenu, DropdownItem } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link, Prompt } from "react-router-dom";
-import { actionToogleModalIsOpen } from './actions';
+import { actionToogleModal } from '../Modals/actions';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 
@@ -31,15 +31,15 @@ class Navigation extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                   <NavItem>
-                    <NavLink onClick={ ()=>this.props.actionToogleModalIsOpen("contacts") }>Контакты</NavLink>
+                    <NavLink onClick={ ()=>this.props.actionToogleModal("contacts") }>Контакты</NavLink>
                   </NavItem>
                   <NavItem>
                     <Link className='nav-link' to='/terms'>Правила и условия</Link>
                   </NavItem>
                   <NavItem>
-                    <NavLink onClick={ ()=>this.props.actionToogleModalIsOpen("login")}>Вход</NavLink>
+                    <NavLink onClick={ ()=>this.props.actionToogleModal("login")}>Вход</NavLink>
                   </NavItem>
-                  <Button color="secondary" onClick={ ()=>this.props.actionToogleModalIsOpen("register") } >Регистрация <span>&#8594;</span></Button>
+                  <Button color="secondary" onClick={ ()=>this.props.actionToogleModal("register") } >Регистрация <span>&#8594;</span></Button>
               </Nav>
           </Collapse>
         </Navbar>
@@ -48,5 +48,5 @@ class Navigation extends React.Component {
 }
 
 export default connect( null, dispatch => {
-  return bindActionCreators({actionToogleModalIsOpen },dispatch);
+  return bindActionCreators({actionToogleModal},dispatch);
 })(Navigation)

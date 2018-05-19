@@ -41,7 +41,7 @@ class ExchangeForm extends React.Component {
 	async submit(){
 		if (validate(this.props.exchangeInfo, this.errorSetter) === 'valid'){
 			await this.props.createDataStamp();
-			const transaction = { ...this.props.exchangeInfo, dataStamp: this.props.dataStamp };
+			const transaction = { ...this.props.exchangeInfo, rate: this.props.rate, dataStamp: this.props.dataStamp };
 			this.props.createTransaction( transaction );
 			bake_cookie( 'transaction', transaction );
 			this.props.history.push('/transaction' + this.props.dataStamp);
@@ -107,7 +107,7 @@ function mapDispatchToProps(dispatch){
 export default withRouter(connect(
 	state => ({
 		exchangeInfo: state.exchangeReducer,
-		// method: state.exchangeInfoReducer.method,
+		rate: state.rateReducer.rate,
 		dataStamp: state.transactionsCreatorReducer.dataStamp
 	}),
 	mapDispatchToProps

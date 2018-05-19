@@ -1,14 +1,7 @@
 import React from 'react';
 import {
-	Container,
-	Row,
-	Col,
-	Form,
-	InputGroup,
-	Label,
-	Input,
-	DropdownItem,
-	Button
+	Container, Row, Col, Form, InputGroup,
+	Label, Input, DropdownItem, Button
 } from 'reactstrap';
 import MaskedInput from 'react-maskedinput';
 import iconUser from '../img/icon-user.png';

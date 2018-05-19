@@ -2,9 +2,7 @@ import React from 'react';
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 import validationAuth from '../validationAuth';
-
-import { LOGIN_API_URL, REGISTER_API_URL } from '../../../config';
-import { bake_cookie } from 'sfcookies';
+import { login, register } from '../../../services/LoginRegister';
 
 export default class LoginRegisterModal extends React.Component {
 	constructor(props, context) {
@@ -27,41 +25,19 @@ export default class LoginRegisterModal extends React.Component {
 
 	warningSetter(w){ this.setState({warningMessage: w}) }
 
-	login(phone, password, warningSetter){
-		fetch( LOGIN_API_URL, {
-			method: 'post',
-			headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
-			body: JSON.stringify({ "phone": phone, "password": password })
-		}).then( res => res.ok ? res.json() : warningSetter('Неправильный телефон или пароль'))
-			.then( data => { if (data) bake_cookie('session', {id: data.id, token: data.token}) })
-			.then(() => {
-				this.props.toogleModal();
-				window.location.pathname = `/account`;
-			})
-	}
-
-	register(phone, password, warningSetter){
-		fetch( REGISTER_API_URL, {
-			method: 'post',
-			headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-			body: JSON.stringify({ "phone": phone, "password": password })
-		})
-		.then( res => res.ok ? res.json() : warningSetter('Такой пользователь уже зарегистрирован'))
-		.then( data => data ? this.login(phone, password, warningSetter) : null );
-	}
-
 	loginSubmitHandler(){
 		const phone = this.state.phone,
 					pwd = this.state.password,
 					isValid = validationAuth(phone, pwd);
-		isValid == 'valid' ? this.login(phone, pwd, this.warningSetter) : this.setState(isValid)
+		isValid == 'valid' ? login(phone, pwd, this.warningSetter) : this.setState(isValid)
 	}
+
 	registerSubmitHandler(){
 		const phone = this.state.phone,
 					pwd = this.state.password,
 					rpwd = this.state.repeatPassword,
 					isValid = validationAuth(phone, pwd, rpwd);
-		isValid == 'valid' ? this.register(phone, pwd, this.warningSetter) : this.setState(isValid);
+		isValid == 'valid' ? register(phone, pwd, this.warningSetter) : this.setState(isValid);
 	}
 
 	inputHandler(inputName, value){ this.setState({[inputName] : value}) }
