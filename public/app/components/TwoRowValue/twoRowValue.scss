@@ -13,3 +13,12 @@
 		font-size: .8em;
 	}
 }
+
+@media (min-width: 768px) {
+	.two-row-value{
+		.two-row-value__val{
+			display: block;
+			font-size: 1em;
+		}
+	}
+}

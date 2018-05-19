@@ -13,7 +13,7 @@
 	padding: 1em;
 	table{
 		margin: 2em 0;
-		font-size: .6em;
+		font-size: .7em;
 		th{ border: none; }
 		td{ border: none; }
 		tr:nth-child(odd){ background: rgba($white, 0.05); }
@@ -38,5 +38,6 @@
 	.transaction-info-container{ margin: 10em auto; }
 	.transaction-info-block{
 		padding: 2em;
+		table{ font-size: 1em; }
 	}
 }
