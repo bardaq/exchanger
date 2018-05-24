@@ -1,0 +1,10 @@
+{
+"in_amount": 0.123
+"out_amount": 96554.86
+"in_curr": btc
+"out_curr": rub
+"out_method": sber
+"card_num": 123123123
+"fio": sad
+"email":qwe@asd.co
+}
