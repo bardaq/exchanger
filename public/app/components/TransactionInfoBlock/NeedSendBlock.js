@@ -21,7 +21,7 @@ export default class NeedSendBlock extends React.Component {
 	render(){
 		return (
 			<div className='transaction-info-block'>
-				<TwoRowValue isBig={true}  val={this.props.incomeAmount} curr='btc' text='Отдаете' />
+				<TwoRowValue isBig={true}  val={this.props.incomeAmount} curr={this.props.incomeCurrency} text='Отдаете' />
 				<TwoRowValue isBig={false} val={this.props.wallet} text='На биткоин адрес:' />
 				<div id="qr-code-container" className="qr-code-container"> </div>
 			</div>

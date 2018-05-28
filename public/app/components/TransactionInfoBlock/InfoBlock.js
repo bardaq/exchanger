@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'reactstrap';
 import Countdown from 'react-countdown-now';
-import { delete_cookie } from 'sfcookies';
+import cookie from 'react-cookies';
 
 export default class InfoBlock extends React.Component {
 	constructor(props){
@@ -15,7 +15,7 @@ export default class InfoBlock extends React.Component {
 
 	renderer({ hours, minutes, seconds, completed }) {
 		if (completed) {
-			delete_cookie('transcaction');
+			cookie.remove('transcaction');
 			return 'Транзакция просрочена';
 		}
 		else { return <span>Истекает через {hours}:{minutes}:{seconds}</span> }

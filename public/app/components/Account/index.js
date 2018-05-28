@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from 'reactstrap';
-import {read_cookie, delete_cookie } from 'sfcookies';
+import cookie from 'react-cookies';
 export default class AccountPage extends React.Component {
 	render(){
-		const user = read_cookie('session');
+		const user = cookie.load('session');
 		return (
 			<Container>
 				<Row>

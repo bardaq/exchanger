@@ -4,7 +4,6 @@ import NeedSendBlock from "./NeedSendBlock";
 import WillReceiveBlock from "./WillReceiveBlock";
 import { Container, Row, Col } from 'reactstrap';
 
-
 // TODO
 // fill inputs if cookies has transaction
 
@@ -29,6 +28,7 @@ export default class TransactionPage extends React.Component {
 					<Col xs={12} md={5}>
 						<NeedSendBlock
 							incomeAmount={this.props.transactionInfo.incomeAmount}
+							incomeCurrency={this.props.transactionInfo.incomeCurrency}
 							wallet= {this.props.transactionInfo.wallet}
 						/>
 						<WillReceiveBlock

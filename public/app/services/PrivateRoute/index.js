@@ -1,7 +1,8 @@
 import React  from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { CHECK_TOKEN_API_URL } from '../../config';
-import { read_cookie } from 'sfcookies';
+import cookie from 'react-cookies';
+
 import AccountPage from '../../pages/AccountPage';
 
 export default class PrivateRoute extends React.Component {
@@ -14,7 +15,7 @@ export default class PrivateRoute extends React.Component {
 	}
 
 	componentDidMount(){
-		const session = read_cookie('session');
+		const session = cookie.load('session')
 		fetch(CHECK_TOKEN_API_URL, {
 			method: 'post',
 			headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},

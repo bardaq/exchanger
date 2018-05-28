@@ -1,8 +1,8 @@
 import { SAVE_ID_AND_TOKEN } from '../../constants';
-import {bake_cookie, delete_cookie} from 'sfcookies';
+import cookie from 'react-cookies';
 
 export const login = (id, token, phone) => {
-	bake_cookie('session', {id: id, token: token, phone: phone})
+	cookie.save('session', {id: id, token: token, phone: phone})
 	return{
 	  type: SAVE_ID_AND_TOKEN,
 	  payload: {
@@ -14,6 +14,6 @@ export const login = (id, token, phone) => {
 }
 
 export const logout = () => {
-	delete_cookie('session');
+	deleteCookie('session');
 	window.location.pathname = '/';
 }

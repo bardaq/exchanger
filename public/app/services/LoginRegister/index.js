@@ -1,7 +1,6 @@
 import { LOGIN_API_URL, REGISTER_API_URL,  } from '../../config';
 import { actionToogleModal } from '../../components/Modals/actions';
 import { login as actionLogin, register as actionRegister } from './actions';
-import { bake_cookie } from 'sfcookies';
 
 export function login(phone, password, warningSetter, cb){
 	fetch( LOGIN_API_URL, {
